@@ -32,9 +32,9 @@ app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Credentials", true);
   
   if (req.method === "OPTIONS") {
-    res.status(200).end();
+    return res.status(200).end();
   }
-  next();
+  return next();
 });
 
 app.get("/", verifyAccessToken, async (req, res, next) => {
