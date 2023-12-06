@@ -20,29 +20,24 @@ app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 3000;
 
 app.use(function (req, res, next) {
-  // res.setHeader("Access-Control-Allow-Origin", "*");
-
-  if (req.method === "OPTIONS") {
-    res.header('Access-Control-Allow-Origin', req.headers.origin);
-  } else {
-    res.header('Access-Control-Allow-Origin', '*');
-  }
+  res.setHeader("Access-Control-Allow-Origin", "*");
 
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
   );
+
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Content-Type, Authorization"
   );
+
   res.setHeader("Access-Control-Allow-Credentials", true);
 
-  /* if (req.method === "OPTIONS") {
+  if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
-  return next(); */
-  next();
+  return next();
 });
 
 app.get("/", verifyAccessToken, async (req, res, next) => {
