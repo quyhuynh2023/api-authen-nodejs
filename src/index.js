@@ -27,7 +27,7 @@ app.use(function (req, res, next) {
   );
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Content-Type, Authorization, X-Requested-With"
+    "Content-Type, Authorization, X-Auth-Token, Origin"
   );
   res.setHeader("Access-Control-Allow-Credentials", true);
   next();
